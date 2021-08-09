@@ -3,7 +3,7 @@ const {
     model
 } = require('mongoose')
 
-const RoleSchema = Schema({
+const ClassificationSchema = Schema({
     name: {
         type: String,
         require: [true, 'The name is required']
@@ -12,6 +12,6 @@ const RoleSchema = Schema({
         type: String,
         require: [true, 'The description is required']
     }
-});
+})
 
-module.exports = model('Role', RoleSchema);
+module.exports = model('Classification', ClassificationSchema);
