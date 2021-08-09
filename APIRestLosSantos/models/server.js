@@ -11,7 +11,9 @@ class Server{
 
         //Rutas
         this.paths = {
-            auth        :   '/api/auth'
+            auth        :   '/api/auth',
+            user        :   '/api/user',
+            role        :   '/api/role'
         }
 
         //Conexion a la db
@@ -30,6 +32,8 @@ class Server{
 
     routes(){
         this.app.use(this.paths.auth, require('../routes/auth'));
+        this.app.use(this.paths.user, require('../routes/user'));
+        this.app.use(this.paths.role, require('../routes/role'));
     }
 
     listen(){
