@@ -1,8 +1,5 @@
-const { Producto, 
-    Usuario 
-} = require('../models');
-
-const Role = require('../models/role')
+const Role = require('../models/role');
+const user = require('../models/user');
 
 const esRolValido = async (rol = '') =>{
     const existeRol = await Role.findOne({rol});
@@ -11,11 +8,11 @@ const esRolValido = async (rol = '') =>{
     }
 }
 
-const emailExiste = async(correo = '') =>{
+const existEmail = async(email = '') =>{
     //Verificar si el correo existe
-   const existeCorreo = await Usuario.findOne({correo});
+   const existeCorreo = await user.findOne({email});
    if(existeCorreo){
-       throw new Error(`El correo: ${correo}, ya esta registrado`);
+       throw new Error(`The email: ${email}, it's already created`);
    }
 }
 
@@ -27,13 +24,6 @@ const usuarioPorIdExiste = async( id ) =>{
    }
 }
 
-const productoPorIdExiste = async (id)=>{
-   //Verificar si el producto existe
-   const existeId = await Producto.findById(id);
-   if(!existeId){
-       throw new Error(`El id: ${id}, no existe`);
-   }
-}
 
 const coleccionesPermitidas = async(coleccion = '', coleccionesPermitidas = []) =>{
     const incluida = coleccionesPermitidas.includes(coleccion);
@@ -47,8 +37,7 @@ const coleccionesPermitidas = async(coleccion = '', coleccionesPermitidas = []) 
 
 module.exports = {
     esRolValido,
-    emailExiste,
+    existEmail,
     usuarioPorIdExiste,
-    productoPorIdExiste,
     coleccionesPermitidas
 }

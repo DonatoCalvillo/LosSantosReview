@@ -25,8 +25,7 @@ const UserSchema = Schema({
         required: [true, 'The password is required']
     },
     image: {
-        type: String,
-        required: [true, 'The image is required']
+        type: String
     },
     role: {
         type: Schema.Types.ObjectId,
