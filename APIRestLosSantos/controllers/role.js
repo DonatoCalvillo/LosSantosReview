@@ -9,6 +9,17 @@ const createRole = async (req, res = response) => {
         name,
         description
     } = req.body;
+
+    const tempName = req.body.name.toUpperCase()
+
+    const testName = await role.findOne({'name' : tempName});
+
+    if(testName){
+        return res.status(400).json({
+            msg: `The role ${ testName.name }, already exist`
+        });
+    }
+
     const newRole = new role({
         name,
         description
@@ -20,6 +31,24 @@ const createRole = async (req, res = response) => {
     res.json(newRole);
 }
 
+const getRoles = async (req, res = response) => {
+    const [roles] = await Promise.all([role.find()]);
+    
+    res.json({
+        roles
+    });
+}
+
+const deleteRole = async (req, res = response) => {
+    const {id} = req.params;
+
+    const roleDeleted = await role.findByIdAndDelete( id );
+
+    res.json({ roleDeleted });
+}
+
 module.exports = {
-    createRole
+    createRole,
+    deleteRole,
+    getRoles
 }

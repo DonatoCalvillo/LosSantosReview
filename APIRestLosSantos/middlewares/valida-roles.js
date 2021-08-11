@@ -1,23 +1,36 @@
-const { request, response } = require("express")
+const { request, response } = require("express");
+const role = require("../models/role");
 
 
-const esAdmin = (req = request, res= response, next) =>{
+const isSuperAdmin = (req = request, res= response, next) =>{
 
-    if(!req.usuario){
+    const usuario = req.newUser;
+    if(!req.newUser){
         return res.status(500).json({
-            msg: 'Se quiere verificar el rol sin validar el token primero'
+            msg: 'You want to verify the role without validating the token first',
+            usuario
         })
     }
 
-    const {rol, nombre} = req.usuario;
-
-    if(rol !== 'ADMIN'){
+    // const { name }  = req.newUser;
+    const role = usuario.role.name;
+    // return res.status(500).json({
+    //     role
+    // })
+    if(role !== 'Super Admin'){
         return res.status(401).json({
-            msg: `${nombre} no es administrador - No puede hacer esta accion`
+            msg: `You are not an super admin, you are ${role} - You cannot do this action`
         })
     }
 
     next();
+}
+
+const existRole = async(_id) =>{
+    const existeId = await role.findById(_id);
+    if(!existeId){
+        throw new Error(`El id: ${id}, no existe`);
+    }
 }
 
 const tieneRol = (...roles) => {
@@ -35,6 +48,7 @@ const tieneRol = (...roles) => {
 }
 
 module.exports = {
-    esAdmin,
-    tieneRol
+    isSuperAdmin,
+    tieneRol,
+    existRole
 }
