@@ -47,8 +47,25 @@ const deleteRole = async (req, res = response) => {
     res.json({ roleDeleted });
 }
 
+const updateRole = async (req, res = response) => {
+    const { id } = req.params;
+    const { name, description } = req.body;
+
+    const existRole = await role.findOne({name});
+
+    if(existRole){
+        return res.status(400).json({
+            msg: `The role: ${name} already exist.`
+        })
+    }
+
+    const newRole = await role.findByIdAndUpdate(id, {name, description} , {new: true})
+    res.json({existRole})
+}
+
 module.exports = {
     createRole,
     deleteRole,
-    getRoles
+    getRoles,
+    updateRole
 }

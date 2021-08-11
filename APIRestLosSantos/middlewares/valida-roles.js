@@ -12,11 +12,8 @@ const isSuperAdmin = (req = request, res= response, next) =>{
         })
     }
 
-    // const { name }  = req.newUser;
     const role = usuario.role.name;
-    // return res.status(500).json({
-    //     role
-    // })
+    
     if(role !== 'Super Admin'){
         return res.status(401).json({
             msg: `You are not an super admin, you are ${role} - You cannot do this action`
