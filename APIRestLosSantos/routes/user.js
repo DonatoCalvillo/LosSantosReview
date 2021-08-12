@@ -8,7 +8,8 @@ const {
     createUser,
     updateUser,
     getUsers,
-    getUserById
+    getUserById,
+    deleteUser
 } = require('../controllers/user')
 const {
     existEmail,
@@ -16,7 +17,7 @@ const {
     userActive
 } = require('../helpers/db-validator')
 const {
-    validarJWT
+    validarJWT, isSuperAdmin
 } = require('../middlewares')
 const {
     validarCampos
@@ -51,5 +52,13 @@ router.put('/:id', [
     check('id').custom(userByIdExist),
     validarCampos
 ], updateUser)
+
+router.delete('/:id',[
+    validarJWT,
+    isSuperAdmin,
+    check('id', 'This is not a valid Mongo id').isMongoId(),
+    check('id').custom(userByIdExist),
+    validarCampos
+], deleteUser)
 
 module.exports = router
