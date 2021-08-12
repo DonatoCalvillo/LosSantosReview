@@ -60,7 +60,7 @@ const updateRole = async (req, res = response) => {
     }
 
     const newRole = await role.findByIdAndUpdate(id, {name, description} , {new: true})
-    res.json({existRole})
+    res.json({newRole})
 }
 
 module.exports = {
