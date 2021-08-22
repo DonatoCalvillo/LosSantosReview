@@ -4,13 +4,15 @@ const {
 } = require("express");
 
 const role = require("../models/role");
+const classification = require("../models/classification");
+
 
 const isSuperAdmin = (req = request, res = response, next) => {
 
     const usuario = req.newUser;
     if (!req.newUser) {
         return res.status(500).json({
-            msg: 'You want to verify the role without validating the token first',
+            msg: 'You want to verify the classification without validating the token first',
             usuario
         })
     }
@@ -19,21 +21,21 @@ const isSuperAdmin = (req = request, res = response, next) => {
 
     if (role !== 'Super Admin') {
         return res.status(401).json({
-            msg: `You are not an super admin, you are ${role} - You cannot do this action`
+            msg: `You are not an Super Admin, you are ${role} - You cannot do this action`
         })
     }
 
     next();
 }
 
-const existRole = async (_id) => {
-    const existeId = await role.findById(_id);
+const existClassification = async (_id) => {
+    const existeId = await classification.findById(_id);
     if (!existeId) {
         throw new Error(`The id ${_id}, does not exist`);
     }
 }
 
-const tieneRol = (...roles) => {
+const haveRole = (...roles) => {
     return (req = request, res = response, next) => {
         const {
             rol
@@ -41,7 +43,7 @@ const tieneRol = (...roles) => {
 
         if (!roles.includes(rol)) {
             return res.status(401).json({
-                msg: `The service requires one of these roles: ${roles}`
+                msg: `El servicio requiere uno de estos roles: ${roles}`
             })
         }
 
@@ -51,6 +53,6 @@ const tieneRol = (...roles) => {
 
 module.exports = {
     isSuperAdmin,
-    tieneRol,
-    existRole
+    haveRole,
+    existClassification
 }

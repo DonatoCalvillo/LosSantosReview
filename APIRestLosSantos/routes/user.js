@@ -17,7 +17,8 @@ const {
     userActive
 } = require('../helpers/db-validator')
 const {
-    validarJWT, isSuperAdmin
+    validarJWT,
+    isSuperAdmin
 } = require('../middlewares')
 const {
     validarCampos
@@ -27,7 +28,7 @@ const router = Router()
 
 router.get('/', getUsers)
 
-router.get('/:id',[
+router.get('/:id', [
     check('id', 'This is not a valid Mongo id').isMongoId(),
     check('id').custom(userByIdExist),
     check('id').custom(userActive),
@@ -53,7 +54,7 @@ router.put('/:id', [
     validarCampos
 ], updateUser)
 
-router.delete('/:id',[
+router.delete('/:id', [
     validarJWT,
     isSuperAdmin,
     check('id', 'This is not a valid Mongo id').isMongoId(),

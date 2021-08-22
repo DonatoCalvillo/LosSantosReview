@@ -14,4 +14,10 @@ const ClassificationSchema = Schema({
     }
 })
 
+ClassificationSchema.methods.toJSON = function () {
+    const { __v, _id, ...classification } = this.toObject();
+    classification.id = _id;
+    return classification;
+}
+
 module.exports = model('Classification', ClassificationSchema);
