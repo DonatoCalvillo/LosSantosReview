@@ -44,7 +44,17 @@ const ContentSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Classification',
         require: true
+    },
+    status: {
+        type: Boolean,
+        default: 1
     }
 });
+
+ContentSchema.methods.toJSON = function () {
+    const { __v, _id, status, ...newContent } = this.toObject();
+    newContent.uid = _id;
+    return newContent;
+}
 
 module.exports = model('Content', ContentSchema);

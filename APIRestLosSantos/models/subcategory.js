@@ -12,7 +12,17 @@ const SubcategorySchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category',
         require: true
+    },
+    status: {
+        type: Boolean,
+        default: 1
     }
 });
+
+SubcategorySchema.methods.toJSON = function () {
+    const { __v, _id, status, ...newSubcategory } = this.toObject();
+    newSubcategory.uid = _id;
+    return newSubcategory;
+}
 
 module.exports = model('Subcategory', SubcategorySchema);

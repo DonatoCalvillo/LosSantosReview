@@ -1,14 +1,28 @@
-const Categoria = require('./categoria');
+const Category = require('./category')
+const Classification = require('./classification')
+const Coment = require('./coment')
+const Company = require('./company')
+const Country = require('./country')
+const Content = require('./content')
+const Rating = require('./rating')
+const Review = require('./review')
 const Role = require('./role');
 const Server = require('./server');
-const Usuario = require('./usuario');
-const Producto = require('./producto');
+const Subcategory = require('./subcategory')
+const User = require('./user')
 
 
 module.exports = {
-    Categoria,
-    Producto,
+    Category,
+    Classification,
+    Coment,
+    Company,
+    Content,
+    Country,
+    Rating,
+    Review,
     Role,
     Server,
-    Usuario
+    Subcategory,
+    User
 }

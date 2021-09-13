@@ -11,7 +11,17 @@ const CountrySchema = Schema({
     name: {
         type: String,
         required: [true, 'The name is required']
+    },
+    status: {
+        type: Boolean,
+        default: 1
     }
 });
+
+CountrySchema.methods.toJSON = function () {
+    const { __v, _id, status, ...newCountry } = this.toObject();
+    newCountry.uid = _id;
+    return newCountry;
+}
 
 module.exports = model('Country', CountrySchema);
