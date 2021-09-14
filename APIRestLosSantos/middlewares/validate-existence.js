@@ -6,7 +6,8 @@ const {
     Rating,
     Content,
     User,
-    Review
+    Review,
+    Classification
 } = require("../models/index")
 
 
@@ -14,6 +15,13 @@ const existCategory = async (id) =>{
     const existeId =  await Category.findById(id)
     if(!existeId){
         throw new Error(`The id ${id}, does not exist`)
+    }
+}
+
+const existClassification = async (id) => {
+    const existeId = await Classification.findById(id);
+    if (!existeId) {
+        throw new Error(`The id ${id}, does not exist`);
     }
 }
 
@@ -69,6 +77,7 @@ const existReview = async (id) => {
 
 module.exports = {
     existCategory,
+    existClassification,
     existSubcategory,
     existCountry,
     existCompany,
