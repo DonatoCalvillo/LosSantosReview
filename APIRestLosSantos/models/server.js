@@ -1,4 +1,5 @@
 const express = require('express')
+const logger = require('../helpers/logger')
 const cors = require('cors')
 const {
     dbConnection
@@ -13,10 +14,17 @@ class Server {
 
         //Rutas
         this.paths = {
-            auth: '/api/auth',
-            role: '/api/role',
-            user: '/api/user',
-            classification: '/api/classification'
+            auth            : '/api/auth',
+            category        : '/api/category',
+            classification  : '/api/classification',
+            company         : '/api/company',
+            content         : '/api/content',
+            country         : '/api/country',
+            rating          : '/api/rating',
+            review          : '/api/review',
+            role            : '/api/role',
+            subcategory     : '/api/subcategory',
+            user            : '/api/user',
         }
 
         //Conexion a la db
@@ -35,14 +43,22 @@ class Server {
 
     routes() {
         this.app.use(this.paths.auth, require('../routes/auth'));
-        this.app.use(this.paths.role, require('../routes/role'));
-        this.app.use(this.paths.user, require('../routes/user'));
+        this.app.use(this.paths.category, require('../routes/category'));
         this.app.use(this.paths.classification, require('../routes/classification'));
+        this.app.use(this.paths.company, require('../routes/company'));
+        this.app.use(this.paths.content, require('../routes/content'));
+        this.app.use(this.paths.country, require('../routes/country'));
+        this.app.use(this.paths.rating, require('../routes/rating'));
+        this.app.use(this.paths.review, require('../routes/review'));
+        this.app.use(this.paths.role, require('../routes/role'));
+        this.app.use(this.paths.subcategory, require('../routes/subcategory'));
+        this.app.use(this.paths.user, require('../routes/user'));
     }
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log('server running on port ', this.port);
+            // console.log('server running on port ', this.port);
+            logger.info(`Server running at the port ${this.port}`)
         })
     }
 

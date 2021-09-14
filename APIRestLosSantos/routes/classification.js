@@ -1,10 +1,6 @@
-const {
-    Router
-} = require('express')
+const {Router} = require('express')
 
-const {
-    check
-} = require('express-validator')
+const {check} = require('express-validator')
 
 const {
     createClassification,
@@ -12,11 +8,7 @@ const {
     updateClassification,
     deleteClassification
 } = require('../controllers/classification')
-
-const {
-    isSuperAdmin,
-    existClassification
-} = require('../middlewares/validate-classification')
+const { isSuperAdmin } = require('../middlewares')
 
 const {
     validarCampos
@@ -25,12 +17,15 @@ const {
 const {
     validarJWT
 } = require('../middlewares/validar-jwt')
+const { existClassification } = require('../middlewares/validate-existence')
 
 const router = Router()
 
 router.get('/', getClassifications)
 
 router.post('/', [
+    validarJWT,
+    isSuperAdmin,
     check('name', 'The name is required').not().isEmpty(),
     check('description', 'The description is required').not().isEmpty(),
     validarCampos

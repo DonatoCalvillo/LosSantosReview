@@ -36,4 +36,10 @@ const ReviewSchema = Schema({
     }
 });
 
+ReviewSchema.methods.toJSON = function () {
+    const { __v, _id, status, ...newReview } = this.toObject();
+    newReview.uid = _id;
+    return newReview;
+}
+
 module.exports = model('Review', ReviewSchema);

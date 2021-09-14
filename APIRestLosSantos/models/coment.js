@@ -17,6 +17,10 @@ const ComentSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Review',
         require: true
+    },
+    status: {
+        type: Boolean,
+        default: 1
     }
 })
 

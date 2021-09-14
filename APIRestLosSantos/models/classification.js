@@ -11,7 +11,12 @@ const ClassificationSchema = Schema({
     description: {
         type: String,
         require: [true, 'The description is required']
+    },
+    status: {
+        type: Boolean,
+        default: 1
     }
+
 })
 
 ClassificationSchema.methods.toJSON = function () {
