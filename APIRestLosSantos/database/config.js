@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const logger = require('../helpers/logger')
 
 const dbConnection = async() =>{
     try {
@@ -8,10 +9,9 @@ const dbConnection = async() =>{
             useCreateIndex: true,
             useFindAndModify: false
         })
-        console.log('Base de datos ONLINE');
+        logger.info('Database ONLINE');
     } catch (error) {
-        console.log(error)
-        throw new Error('Error en la conexion a la db')
+        logger.error('Error in the DB conection')
     }
 }
 

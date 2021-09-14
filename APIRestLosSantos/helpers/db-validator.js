@@ -1,39 +1,36 @@
-const { Producto, 
-    Usuario 
-} = require('../models');
+const role = require('../models/role');
+const user = require('../models/user');
 
-const Role = require('../models/role')
-
-const esRolValido = async (rol = '') =>{
-    const existeRol = await Role.findOne({rol});
-    if(!existeRol){
-        throw new Error(`El rol ${rol} no esta definido en la db`);
+const isValidRole = async (roleParam = '') =>{
+    const existRole = await role.findOne({roleParam});
+    if(!existRole){
+        throw new Error(`The role ${roleParam} is not defined in the db`);
     }
 }
 
-const emailExiste = async(correo = '') =>{
+const existEmail = async(email = '') =>{
     //Verificar si el correo existe
-   const existeCorreo = await Usuario.findOne({correo});
+   const existeCorreo = await user.findOne({email});
    if(existeCorreo){
-       throw new Error(`El correo: ${correo}, ya esta registrado`);
+       throw new Error(`The email: ${email}, it's already created`);
    }
 }
 
-const usuarioPorIdExiste = async( id ) =>{
-    //Verificar si el correo existe
-   const existeId = await Usuario.findById(id);
-   if(!existeId){
-       throw new Error(`El id: ${id}, no existe`);
+const userByIdExist = async( id ) =>{
+    //Verificar si el usuario existe
+   const existId = await user.findById(id);
+   if(!existId){
+       throw new Error(`The id: ${id}, doesn't exist`);
    }
 }
 
-const productoPorIdExiste = async (id)=>{
-   //Verificar si el producto existe
-   const existeId = await Producto.findById(id);
-   if(!existeId){
-       throw new Error(`El id: ${id}, no existe`);
-   }
+const userActive = async(id) =>{
+    const userTemp = await user.findById(id)
+    if(!userTemp.status){
+        throw new Error(`The id: ${id}, it's deactivated`);
+    }
 }
+
 
 const coleccionesPermitidas = async(coleccion = '', coleccionesPermitidas = []) =>{
     const incluida = coleccionesPermitidas.includes(coleccion);
@@ -46,9 +43,9 @@ const coleccionesPermitidas = async(coleccion = '', coleccionesPermitidas = []) 
 }
 
 module.exports = {
-    esRolValido,
-    emailExiste,
-    usuarioPorIdExiste,
-    productoPorIdExiste,
-    coleccionesPermitidas
+    isValidRole,
+    existEmail,
+    userByIdExist,
+    coleccionesPermitidas,
+    userActive
 }
