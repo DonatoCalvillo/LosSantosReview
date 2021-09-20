@@ -25,6 +25,7 @@ class Server {
             role            : '/api/role',
             subcategory     : '/api/subcategory',
             user            : '/api/user',
+            uploads         : '/api/uploads',
         }
 
         //Conexion a la db
@@ -53,6 +54,7 @@ class Server {
         this.app.use(this.paths.role, require('../routes/role'));
         this.app.use(this.paths.subcategory, require('../routes/subcategory'));
         this.app.use(this.paths.user, require('../routes/user'));
+        this.app.use(this.paths.uploads, require('../routes/uploads'));
     }
 
     listen() {
