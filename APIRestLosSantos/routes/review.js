@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const {check} = require("express-validator")
-const { getReviews, createReview, updateReview } = require('../controllers/review')
+const { getReviews, createReview, updateReview, deleteReview } = require('../controllers/review')
 const { validarJWT, isSuperAdmin, validarCampos } = require('../middlewares')
 const { existContent, existUser, existReview } = require('../middlewares/validate-existence')
 
@@ -42,6 +42,6 @@ router.delete('/:id',[
     check('id', 'This is not a valid Mongo id').isMongoId(),
     check('id').custom( existReview ),
     validarCampos
-])
+], deleteReview)
 
 module.exports = router

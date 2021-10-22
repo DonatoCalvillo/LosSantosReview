@@ -2,7 +2,9 @@ const {
     response
 } = require("express")
 const {
-    Rating
+    Rating,
+    User,
+    Content
 } = require("../models")
 const logger = require("../helpers/logger")
 
@@ -45,12 +47,13 @@ const createRating = async (req, res = response) => {
         } = req.body
 
         const existRating = await Rating.findOne({
-            user
+            user,
+            content
         })
 
         if (existRating) {
             return res.status(400).json({
-                msg: `This user: ${title}, already have a rating`
+                msg: `The user has already rated this content`
             })
         }
 
@@ -91,7 +94,7 @@ const updateRating = async (req, res = response) => {
 
         if (existRating) {
             return res.status(400).json({
-                msg: `This user: ${title}, already have a rating`
+                msg: `This user: ${user}, already have a rating`
             })
         }
 
