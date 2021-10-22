@@ -45,7 +45,7 @@ const createReview = async (req, res = response) => {
             user
         } = req.body
 
-        const existReview = await Content.findOne({
+        const existReview = await Review.findOne({
             title
         })
 
@@ -93,7 +93,7 @@ const updateReview = async (req, res = response) => {
             user
         } = req.body
 
-        const existReview = await Content.findOne({
+        const existReview = await Review.findOne({
             title
         })
 

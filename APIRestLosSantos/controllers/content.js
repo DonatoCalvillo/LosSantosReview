@@ -113,7 +113,7 @@ const updateContent = async (req, res = response) => {
             })
         }
 
-        const newContent = await Subcategory.findByIdAndUpdate(id, {
+        const newContent = await Content.findByIdAndUpdate(id, {
             title,
             description,
             trailerLink,
@@ -143,7 +143,7 @@ const deleteContent = async (req, res = response) => {
             id
         } = req.params
 
-        const deletedContent = await Subcategory.findByIdAndUpdate(id, {
+        const deletedContent = await Content.findByIdAndUpdate(id, {
             status: false
         })
 

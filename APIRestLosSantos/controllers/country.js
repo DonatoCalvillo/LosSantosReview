@@ -63,7 +63,7 @@ const createCountry = async (req, res = response) => {
 
         await country.save()
 
-        res.status(201).json(subcategory)
+        res.status(201).json(country)
     } catch (error) {
         logger.error(`Error: ${error}`)
         res.status(500).json({

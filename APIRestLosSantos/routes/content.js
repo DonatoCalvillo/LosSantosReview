@@ -3,7 +3,8 @@ const {check} = require("express-validator")
 const { 
     getContents, 
     createContent,
-    updateContent
+    updateContent,
+    deleteContent
 } = require('../controllers/content')
 const { 
     validarJWT, 
@@ -66,6 +67,6 @@ router.delete('/:id',[
     check('id', 'This is not a valid Mongo id').isMongoId(),
     check('id').custom( existContent ),
     validarCampos
-])
+], deleteContent)
 
 module.exports = router

@@ -21,7 +21,6 @@ router.post('/',[
     validarJWT,
     isSuperAdmin,
     check('score', 'The score is required').not().isEmpty(),
-    check('score').custom( existContent ),
     check('content', 'The content (id) is required').not().isEmpty(),
     check('user', 'The user (id) is required').not().isEmpty(),
     validarCampos

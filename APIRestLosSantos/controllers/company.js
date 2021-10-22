@@ -126,7 +126,7 @@ const deleteCompany = async (req, res = response) => {
         })
 
         res.json({
-            deleteCompany
+            deletedCompany
         })
     } catch (error) {
         logger.error(`Error: ${error}`)
