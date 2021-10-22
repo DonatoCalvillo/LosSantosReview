@@ -2,12 +2,11 @@ const {
     response
 } = require("express")
 const {
-    Country
+    Review
 } = require("../models")
-const subcategory = require("../models/subcategory")
 const logger = require("../helpers/logger")
 
-const getCountries = async (req, res = response) => {
+const getReviews = async (req, res = response) => {
     try {
         const {
             limit = 5, from = 0
@@ -17,16 +16,16 @@ const getCountries = async (req, res = response) => {
             status: true
         }
 
-        const [total, countries] = await Promise.all([
-            Country.countDocuments(query),
-            Country.find(query)
+        const [total, reviews] = await Promise.all([
+            Review.countDocuments(query),
+            Review.find(query)
             .skip(Number(from))
             .limit(Number(limit))
         ])
 
         res.json({
             total,
-            countries
+            reviews
         })
     } catch (error) {
         logger.error(`Error: ${error}`)
@@ -36,34 +35,42 @@ const getCountries = async (req, res = response) => {
     }
 }
 
-const createCountry = async (req, res = response) => {
+const createReview = async (req, res = response) => {
     try {
         const {
-            name,
-            ISO2
+            title,
+            subtitle,
+            body,
+            content,
+            user
         } = req.body
 
-        const existCountry = await Country.findOne({
-            name,
-            ISO2
+        const existReview = await Review.findOne({
+            title
         })
 
-        if (existCountry) {
+        if (existReview) {
             return res.status(400).json({
-                msg: `The country ${name} or the ISO2 ${ISO2}, already exist`
+                msg: `The review ${title}, already exist`
             })
         }
 
+        const realiseDate = Date()
+
         const data = {
-            name,
-            ISO2
+            title,
+            subtitle,
+            body,
+            realiseDate,
+            content,
+            user
         }
 
-        const country = await Country(data)
+        const review = await Review(data)
 
-        await country.save()
+        await review.save()
 
-        res.status(201).json(subcategory)
+        res.status(201).json(review)
     } catch (error) {
         logger.error(`Error: ${error}`)
         res.status(500).json({
@@ -72,37 +79,42 @@ const createCountry = async (req, res = response) => {
     }
 }
 
-const updateCountry = async (req, res = response) => {
+const updateReview = async (req, res = response) => {
     try {
         const {
             id
         } = req.params
 
         const {
-            name,
-            ISO2
+            title,
+            subtitle,
+            body,
+            content,
+            user
         } = req.body
 
-        const existCountry = await Country.findOne({
-            name,
-            ISO2
+        const existReview = await Review.findOne({
+            title
         })
 
-        if (existCountry) {
+        if (existReview) {
             return res.status(400).json({
-                msg: `The country ${name} or the ISO2 ${ISO2}, already exist`
+                msg: `The review ${title}, already exist`
             })
         }
 
-        const newCountry = await Country.findByIdAndUpdate(id, {
-            name,
-            ISO2
+        const newReview = await Review.findByIdAndUpdate(id, {
+            title,
+            subtitle,
+            body,
+            content,
+            user
         }, {
             new: true
         })
 
         res.json({
-            newCountry
+            newReview
         })
     } catch (error) {
         logger.error(`Error: ${error}`)
@@ -112,18 +124,18 @@ const updateCountry = async (req, res = response) => {
     }
 }
 
-const deleteCountry = async (req, res = response) => {
+const deleteReview = async (req, res = response) => {
     try {
         const {
             id
         } = req.params
 
-        const deletedCountry = await Country.findByIdAndUpdate(id, {
+        const deletedReview = await Review.findByIdAndUpdate(id, {
             status: false
         })
 
         res.json({
-            deletedCountry
+            deletedReview
         })
     } catch (error) {
         logger.error(`Error: ${error}`)
@@ -134,8 +146,8 @@ const deleteCountry = async (req, res = response) => {
 }
 
 module.exports = {
-    getCountries,
-    createCountry,
-    updateCountry,
-    deleteCountry
+    getReviews,
+    createReview,
+    updateReview,
+    deleteReview
 }

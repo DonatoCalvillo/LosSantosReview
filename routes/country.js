@@ -25,7 +25,7 @@ router.post('/', [
     validarCampos
 ], createCountry)
 
-router.put(':id',[
+router.put('/:id',[
     validarJWT,
     isSuperAdmin,
     check('id', 'This is not a valid Mongo id').isMongoId(),
