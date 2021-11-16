@@ -143,3 +143,5 @@
 [2021-10-22T04:11:14.724Z] error Error: TypeError: Assignment to constant variable.
 [2021-10-22T04:11:42.143Z] info Server running at the port 8080
 [2021-10-22T04:11:42.737Z] info Database ONLINE
+[2021-10-28T19:12:29.638Z] info Server running at the port 8080
+[2021-10-28T19:12:30.338Z] info Database ONLINE

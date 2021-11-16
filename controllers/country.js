@@ -9,19 +9,9 @@ const logger = require("../helpers/logger")
 
 const getCountries = async (req, res = response) => {
     try {
-        const {
-            limit = 5, from = 0
-        } = req.query
-
-        const query = {
-            status: true
-        }
-
         const [total, countries] = await Promise.all([
-            Country.countDocuments(query),
-            Country.find(query)
-            .skip(Number(from))
-            .limit(Number(limit))
+            Country.countDocuments(),
+            Country.find()
         ])
 
         res.json({
