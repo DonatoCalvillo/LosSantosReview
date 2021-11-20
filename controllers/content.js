@@ -20,6 +20,10 @@ const getContents = async (req, res = response) => {
         const [total, contents] = await Promise.all([
             Content.countDocuments(query),
             Content.find(query)
+            .populate('category','name')
+            .populate('subcategory', 'name')
+            .populate('company', 'name')
+            .populate('classification','name')
             .skip(Number(from))
             .limit(Number(limit))
         ])

@@ -19,6 +19,7 @@ const getReviews = async (req, res = response) => {
         const [total, reviews] = await Promise.all([
             Review.countDocuments(query),
             Review.find(query)
+            .populate('content', 'image')
             .skip(Number(from))
             .limit(Number(limit))
         ])
