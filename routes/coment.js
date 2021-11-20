@@ -8,7 +8,7 @@ router.get('/:id', async (req, res) => {
     try {
         const id = req.params
 
-        const coments = Review.findById(id)
+        const coments = Comment.find({'review' : id })
                 .populate('user', 'name')
                 .populate('review', 'title')
        
