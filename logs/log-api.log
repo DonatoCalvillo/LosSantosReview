@@ -145,3 +145,100 @@
 [2021-10-22T04:11:42.737Z] info Database ONLINE
 [2021-10-28T19:12:29.638Z] info Server running at the port 8080
 [2021-10-28T19:12:30.338Z] info Database ONLINE
+[2021-11-20T05:03:40.735Z] info Server running at the port 8080
+[2021-11-20T05:03:41.401Z] info Database ONLINE
+[2021-11-20T05:03:50.110Z] error Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'NativeTopology'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'topology' closes the circle
+[2021-11-20T05:03:51.149Z] error Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'NativeTopology'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'topology' closes the circle
+[2021-11-20T05:03:51.768Z] error Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'NativeTopology'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'topology' closes the circle
+[2021-11-20T05:04:18.756Z] info Server running at the port 8080
+[2021-11-20T05:04:19.372Z] info Database ONLINE
+[2021-11-20T05:04:21.443Z] error Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'NativeTopology'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'topology' closes the circle
+[2021-11-20T05:04:33.788Z] info Server running at the port 8080
+[2021-11-20T05:04:34.393Z] error Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'NativeConnection'
+    |     property 'base' -> object with constructor 'Mongoose'
+    |     property 'connections' -> object with constructor 'Array'
+    --- index 0 closes the circle
+[2021-11-20T05:04:34.407Z] info Database ONLINE
+[2021-11-20T05:04:35.587Z] error Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'NativeTopology'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'topology' closes the circle
+[2021-11-20T05:05:02.663Z] error Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'NativeTopology'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'topology' closes the circle
+[2021-11-20T05:05:22.279Z] info Server running at the port 8080
+[2021-11-20T05:05:22.919Z] info Database ONLINE
+[2021-11-20T05:06:47.809Z] info Server running at the port 8080
+[2021-11-20T05:06:48.476Z] info Database ONLINE
+[2021-11-20T05:06:59.883Z] info Server running at the port 8080
+[2021-11-20T05:07:00.500Z] info Database ONLINE
+[2021-11-20T05:07:32.175Z] info Server running at the port 8080
+[2021-11-20T05:07:32.782Z] info Database ONLINE
+[2021-11-20T05:07:37.577Z] error Error: CastError: Cast to ObjectId failed for value "{ id: '61987ec75cf03b00165e6d07' }" (type Object) at path "review" for model "Coment"
+[2021-11-20T05:08:01.795Z] info Server running at the port 8080
+[2021-11-20T05:08:02.049Z] error Error: CastError: Cast to ObjectId failed for value "{ id: '61987ec75cf03b00165e6d07' }" (type Object) at path "review" for model "Coment"
+[2021-11-20T05:08:02.533Z] info Database ONLINE
+[2021-11-20T05:08:09.718Z] info Server running at the port 8080
+[2021-11-20T05:08:10.347Z] info Database ONLINE
+[2021-11-20T05:08:29.910Z] info Server running at the port 8080
+[2021-11-20T05:08:30.532Z] info Database ONLINE
+[2021-11-20T05:08:35.481Z] info Server running at the port 8080
+[2021-11-20T05:08:36.092Z] info Database ONLINE
+[2021-11-20T05:08:57.771Z] info Server running at the port 8080
+[2021-11-20T05:08:58.400Z] info Database ONLINE
+[2021-11-20T05:09:40.787Z] info Server running at the port 8080
+[2021-11-20T05:09:41.450Z] info Database ONLINE
+[2021-11-20T05:10:33.139Z] info Server running at the port 8080
+[2021-11-20T05:10:33.831Z] info Database ONLINE
+[2021-11-20T05:11:49.472Z] info Server running at the port 8080
+[2021-11-20T05:11:50.130Z] info Database ONLINE
+[2021-11-20T05:14:44.220Z] info Server running at the port 8080
+[2021-11-20T05:14:44.894Z] info Database ONLINE
+[2021-11-20T05:15:00.136Z] info Server running at the port 8080
+[2021-11-20T05:15:00.737Z] info Database ONLINE
+[2021-11-20T05:15:28.496Z] info Server running at the port 8080
+[2021-11-20T05:15:29.101Z] info Database ONLINE
+[2021-11-20T05:15:53.802Z] info Server running at the port 8080
+[2021-11-20T05:15:54.466Z] info Database ONLINE
+[2021-11-20T05:16:00.546Z] error Error: CastError: Cast to ObjectId failed for value "{ id: '61975510be4c010016884fba' }" (type Object) at path "review" for model "Coment"
+[2021-11-20T05:16:22.346Z] info Server running at the port 8080
+[2021-11-20T05:16:22.493Z] error Error: CastError: Cast to ObjectId failed for value "{ id: '61975510be4c010016884fba' }" (type Object) at path "review" for model "Coment"
+[2021-11-20T05:16:22.982Z] info Database ONLINE
+[2021-11-20T05:16:23.430Z] error Error: CastError: Cast to ObjectId failed for value "{ id: '61975510be4c010016884fba' }" (type Object) at path "review" for model "Coment"
+[2021-11-20T05:18:33.496Z] info Server running at the port 8080
+[2021-11-20T05:18:34.188Z] info Database ONLINE
+[2021-11-20T05:18:37.271Z] info Server running at the port 8080
+[2021-11-20T05:18:37.896Z] info Database ONLINE
+[2021-11-20T05:18:58.259Z] info Server running at the port 8080
+[2021-11-20T05:18:58.879Z] info Database ONLINE
+[2021-11-20T05:19:15.082Z] info Server running at the port 8080
+[2021-11-20T05:19:15.711Z] info Database ONLINE
+[2021-11-20T05:19:26.478Z] info Server running at the port 8080
+[2021-11-20T05:19:27.110Z] info Database ONLINE
+[2021-11-20T05:19:41.240Z] info Server running at the port 8080
+[2021-11-20T05:19:42.922Z] info Server running at the port 8080
+[2021-11-20T05:19:43.595Z] info Database ONLINE
+[2021-11-20T05:20:14.303Z] info Server running at the port 8080
+[2021-11-20T05:20:14.968Z] info Database ONLINE
+[2021-11-20T05:20:37.985Z] info Server running at the port 8080
+[2021-11-20T05:20:38.626Z] info Database ONLINE

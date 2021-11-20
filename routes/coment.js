@@ -6,15 +6,22 @@ const router = Router()
 
 router.get('/:id', async (req, res) => {
     try {
-        const id = req.params
+        const {id} = req.params
+        const query = {
+            review : "61975510be4c010016884fba"
+        }
 
-        const coments = Coment.find({'review' : id })
-                .populate('user', 'name')
-                .populate('review', 'title')
+        const [total, comments] = await Promise.all([
+            Coment.countDocuments(),
+            Coment.find({review : id})
+            .populate('user', 'name')
+            .populate('review', 'title')
+        ])
        
 
         res.json({
-            coments
+            total,
+            comments
         })
 
     } catch (error) {
