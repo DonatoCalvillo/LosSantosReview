@@ -81,7 +81,7 @@ const createUser = async (req, res = response) => {
         //Guardar en db
         await newUser.save()
 
-        res.json(newUser)
+        res.json({newUser})
     } catch (error) {
         logger.error(`Error: ${error}`)
         res.status(500).json({
