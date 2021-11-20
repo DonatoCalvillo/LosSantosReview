@@ -18,6 +18,7 @@ class Server {
             category        : '/api/category',
             classification  : '/api/classification',
             company         : '/api/company',
+            coment          : '/api/coment',
             content         : '/api/content',
             country         : '/api/country',
             rating          : '/api/rating',
@@ -47,6 +48,7 @@ class Server {
         this.app.use(this.paths.category, require('../routes/category'));
         this.app.use(this.paths.classification, require('../routes/classification'));
         this.app.use(this.paths.company, require('../routes/company'));
+        this.app.use(this.paths.coment, require('../routes/coment'));
         this.app.use(this.paths.content, require('../routes/content'));
         this.app.use(this.paths.country, require('../routes/country'));
         this.app.use(this.paths.rating, require('../routes/rating'));

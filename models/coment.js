@@ -24,4 +24,10 @@ const ComentSchema = Schema({
     }
 })
 
+ComentSchema.methods.toJSON = function () {
+    const { __v, _id, status, ...newComent } = this.toObject();
+    newComent.uid = _id;
+    return newComent;
+}
+
 module.exports = model('Coment', ComentSchema);
