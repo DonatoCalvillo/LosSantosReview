@@ -1,23 +1,19 @@
 const {Router} = require('express')
 const logger = require('../helpers/logger')
-const { Coment } = require('../models')
+const { Coment, Review } = require('../models')
 
 const router = Router()
 
 router.get('/:id', async (req, res) => {
     try {
         const id = req.params
-        const query = {status:true}
 
-        const [total, coments] = await Promise.all([
-            Coment.countDocuments(query),
-            Coment.findById(id)
+        const coments = Review.findById(id)
                 .populate('user', 'name')
                 .populate('review', 'title')
-        ])
+       
 
         res.json({
-            total,
             coments
         })
 
